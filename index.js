@@ -36,7 +36,7 @@ function pingPong(ping_reciever){
 		});
 	    //the whole response has been received, so we just print it out here
 	    response.on('end', function () {
-	       console.log(str);
+	       //console.log(str);
 	    });
 	});
 	req.on('error',(err)=>{
