@@ -6,19 +6,10 @@ const port = process.env.PORT || 81;
 
 var httpSrv = http.createServer((req,res)=>{
 	console.log("pong");
-
+	console.log(req.url);
 	//res.setHeader("Access-Control-Allow-Origin",'*');
     res.writeHead(200,{'Content-Type' : 'text/plain'});
-    console.log(URL.parse(req.url,true));
-	var ip = "heroku-for-me.herokuapp.com";
-	try{
-		ping.sys.probe(ip, function(isAlive){
-	        var msg = isAlive ? 'host ' + ip + ' is alive' : 'host ' + ip + ' is dead';
-	        console.log(msg);
-	    });
-	}catch(e){
-		console.log(e);
-	}
+    //console.log(URL.parse(req.url,true));
 	res.write("got you covered");
 	res.end();
 })
