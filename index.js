@@ -7,15 +7,17 @@ const port = process.env.PORT || 81;
 var httpSrv = http.createServer((req,res)=>{
 	console.log("pong");
 	var query = URL.parse(req.url,true).query;
-
+ 	res.writeHead(200,{'Content-Type' : 'text/plain'});
+ 	res.write("got you covered");
+	res.end();
+	
 	if(query.hi == "true"){
 		pingPong("heroku-for-me.herokuapp.com");
 	}
 	//res.setHeader("Access-Control-Allow-Origin",'*');
-    res.writeHead(200,{'Content-Type' : 'text/plain'});
+   
     //console.log(URL.parse(req.url,true));
-	res.write("got you covered");
-	res.end();
+	
 })
 
 httpSrv.listen(port);
