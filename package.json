@@ -1,0 +1,23 @@
+{
+  "name": "heroku-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://iijdiji334q2@github.com/iijdiji334q2/heroku-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iijdiji334q2/heroku-1/issues"
+  },
+  "homepage": "https://github.com/iijdiji334q2/heroku-1#readme",
+  "dependencies": {
+    "ping": "^0.4.0"
+  }
+}
