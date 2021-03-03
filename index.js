@@ -6,7 +6,11 @@ const port = process.env.PORT || 81;
 
 var httpSrv = http.createServer((req,res)=>{
 	console.log("pong");
-	console.log(req.url);
+	var query = URL.parse(req.url,true).query;
+
+	if(query.hi == "true"){
+		pingPong("heroku-for-me.herokuapp.com");
+	}
 	//res.setHeader("Access-Control-Allow-Origin",'*');
     res.writeHead(200,{'Content-Type' : 'text/plain'});
     //console.log(URL.parse(req.url,true));
@@ -16,3 +20,27 @@ var httpSrv = http.createServer((req,res)=>{
 
 httpSrv.listen(port);
 console.log(`Listening on port ${port}`)
+
+function pingPong(ping_reciever){
+	var options = {
+		host:ping_reciever,
+		path:"/?hi=true",
+		port:"80",
+		method:"GET"
+	}
+	//console.log("req");
+	var str = "";
+	var req = http.request(options,(response)=>{
+		response.on('data', function (chunk) {
+		    str += chunk;
+		});
+	    //the whole response has been received, so we just print it out here
+	    response.on('end', function () {
+	       console.log(str);
+	    });
+	});
+	req.on('error',(err)=>{
+		console.log(`Couldn't req with error ${err}`)
+	})
+	req.end();
+}
